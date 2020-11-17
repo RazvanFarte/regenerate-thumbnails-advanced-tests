@@ -27,5 +27,8 @@ node_modules/
 /composer.lock
 /composer.phar
 /docker.sh
-/tests/_output/
-/tests/_support/
+/deployment.xml
+/misc.xml
+/modules.xml
+/regenerate-thumbnails-advanced-rewrite.iml
+/vcs.xml
