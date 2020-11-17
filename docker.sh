@@ -1,0 +1,2 @@
+docker run -h 127.0.0.1 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Password_2019 -e MYSQL_DATABASE=wordpress --name wordpressdb-rta -v /run/desktop/mnt/host/c/Users/Razvan/PhpstormProjects/rta/regenerate-thumbnails-advanced-tests/wordpress/database:/var/lib/mysql -d  mariadb
+docker run -e WORDPRESS_DB_PASSWORD=Password_2019 --name wordpress-rta --link wordpressdb:mysql -p 80:80 -v /run/desktop/mnt/host/c/Users/Razvan/PhpstormProjects/rta/regenerate-thumbnails-advanced-tests/wordpress:/var/www/html -d wordpress
