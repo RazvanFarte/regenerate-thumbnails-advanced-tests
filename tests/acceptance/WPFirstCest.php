@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class WPFirstCest
 {
@@ -6,11 +6,6 @@ class WPFirstCest
     {
     }
 
-    // tests
-    public function tryToTest(AcceptanceTester $I)
-    {
-        $I->wantToTest("Something that will fail");
-    }
 
     public function testPauseButton(AcceptanceTester $I)
     {
