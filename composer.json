@@ -17,5 +17,8 @@
             "name": "Razvan Farte",
             "email": "farterazvan@gmail.com"
         }
-    ]
+    ],
+    "require-dev": {
+        "gumlet/php-image-resize": "1.6"
+    }
 }
