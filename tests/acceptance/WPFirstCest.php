@@ -23,7 +23,6 @@ class WPFirstCest
         $I->see("Process is paused");
 
         $I->reloadPage();
-        $I->see("Interrupted process resumed");
         $I->see("Process is paused");
         $I->makeScreenshot("pause-button-after-reload-page");
         $I->see("Resume Process");
@@ -31,10 +30,11 @@ class WPFirstCest
 
         $I->click("Resume Process");
         $I->see("Interrupted process resumed");
+        $I->wait(3);
         $I->see("Pause Process");
         $I->click("Pause Process");
         $progressPercentage = $I->grabTextFrom(".CircularProgressbar-text");
-        $I->wait(5);
+        $I->wait(3);
         $I->see($progressPercentage, ".CircularProgressbar-text");
     }
 }
