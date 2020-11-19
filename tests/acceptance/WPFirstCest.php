@@ -39,9 +39,33 @@ class WPFirstCest
         $I->wait(3);
         $I->see("Pause Process");
         $I->click("Pause Process");
+
+        $I->wait(3);
+        $regenerated = $I->grabTextFrom('.progress-count>.current');
+        $total = $I->grabTextFrom('.progress-count>.total');
+
+        $I->assertLessThanOrEqual($total, $regenerated, "The amount regenreated thumbnails cannot exceed the total amount of images");
+        $I->assertGreaterOrEquals(0, $regenerated, "The amount regenerated thumbnails count cannot be negative");
+
+        $percentage = $I->grabTextFrom(".CircularProgressbar-text");
+        $I->assertLessThanOrEqual(100, $percentage);
+        $I->assertGreaterThanOrEqual(0, $percentage);
+        //$I->assertEqualsWithDelta($percentage, $regenerated / $total, 1.0); TODO Percentage is a string not a float
+
+        $regeneratedCounterInDb = $I->grabNumRecords('wp_shortpixel_queue', ['status >=' => 3]);
+        $totalCounterInDb = $I->grabNumRecords('wp_shortpixel_queue');
+
+        $I->assertEquals($regeneratedCounterInDb, $regenerated);
+        $I->assertEquals($totalCounterInDb, $total);
+
 //        TODO This is a bit buggy. The optimization pie can load after triggering pause, so the percentage and text can change
 //        $progressPercentage = $I->grabTextFrom(".CircularProgressbar-text");
 //        $I->wait(3);
 //        $I->see($progressPercentage, ".CircularProgressbar-text");
+
+        //TODO This part should be moved to functional suite, as this is not in scope of acceptance
     }
+
+    //TODO Test that checks on filesystem that no other files are created with the setup from pause button (no new dimensions are created)
+    //TODO Check that new files are created on the filesystem (adding new dimensions). Out of the scope for pause button
 }
