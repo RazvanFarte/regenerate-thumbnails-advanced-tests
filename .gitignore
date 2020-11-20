@@ -21,3 +21,14 @@ node_modules/
 *.log
 *.sql
 *.sqlite
+
+/vendor/
+/wordpress/
+/composer.lock
+/composer.phar
+/docker.sh
+/deployment.xml
+/misc.xml
+/modules.xml
+/regenerate-thumbnails-advanced-rewrite.iml
+/vcs.xml
